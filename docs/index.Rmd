@@ -1,0 +1,14 @@
+---
+title: "Zack's Project Homepage"
+author: "Zack Rattell"
+date: "2022-12-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to Zack's Project Homepage!
+
+[Final Project: R Reference Guide](final_R_reference.html)

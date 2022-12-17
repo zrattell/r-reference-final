@@ -1,0 +1,97 @@
+---
+title: "Final R Reference"
+author: "Zack Rattell"
+date: "2022-12-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# R Reference Guide {.tabset .tabset-pills}
+
+## Loading Data and Packages
+
+```{r}
+require(here)
+library(palmerpenguins)
+```
+```{r}
+ginkgo = read.csv(here("data", "ginkgo_data_2021.csv"))
+```
+
+
+## Data Structures
+
+```{r}
+c(ginkgo)
+length(ginkgo)
+matrix(ginkgo)
+data.frame(ginkgo)
+
+nrow(ginkgo)
+ncol(ginkgo)
+dim(ginkgo)
+```
+
+## Subsetting
+```{r}
+ginkgo$site_id
+
+ginkgo[1,]
+ginkgo[2,3]
+ginkgo[,3]
+
+subset(penguins, species == 'Adelie')
+```
+
+
+## Numerical Data Exploration 
+```{r}
+summary(penguins)
+
+penguins_omit = na.omit(penguins)
+mean(penguins_omit$bill_length_mm)
+sd(penguins_omit$bill_length_mm)
+```
+
+
+## Graphical Data Exploration 
+```{r}
+plot(ginkgo$max_width ~ ginkgo$max_depth,
+     col = "red",
+     pch = 1,
+     cex = .6,
+     main = "Ginkgo Leaf Width vs Depth",
+     xlab = "Max Depth (mm)",
+     ylab = "Max Width (mm)",
+     xlim = c(0, 150),
+     ylim = c(0,140))
+
+hist(penguins$flipper_length_mm,
+     breaks = 13,
+     main = "Penguin Flipper Length",
+     xlab = "Flipper Length (mm)")
+
+boxplot(ginkgo$petiole_length,
+        ylab = "Petiole Length (mm)")
+
+
+```
+
+
+## Distribution Functions 
+```{r}
+x= {1:10}
+random_mean = mean(x)
+random_sd = sd(x)
+
+dnorm(x, mean = random_mean, sd = random_sd)
+pnorm(x, random_mean, random_sd)
+qnorm(0.3, random_mean, random_sd)
+dbinom(x, size = 20, prob = 0.2)
+pbinom(12, p = 0.5, size = 20)
+qbinom(p = 0.3, prob= 0.5, size = 20)
+```
+
